@@ -1,0 +1,1 @@
+export const API_ENDPOINT = 'https://fe-challenge.sugarrushcreative.com/api';
