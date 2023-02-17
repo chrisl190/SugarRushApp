@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import WorkIcon from 'react-native-vector-icons/MaterialIcons';
 import SignUpScreen from '../screens/SignUpPassword';
 import LandingScreen from '../screens/Landing';
-import WorkExperience from '../screens/WorkExperience';
+import WorkExperienceItem from '../screens/WorkExperienceItem';
 import Industries from '../screens/Industries';
 const Tab = createBottomTabNavigator();
 
@@ -15,7 +15,7 @@ const BottomTab = () => {
             <Tab.Navigator screenOptions={{ headerShown: false }}>
                 <Tab.Screen 
                     name='WorkExperience'
-                    component={WorkExperience} 
+                    component={WorkExperienceItem} 
                     options={{ 
                         tabBarIcon: ({ color, size }) => (
                             <WorkIcon name="work" color={color} size={size} />

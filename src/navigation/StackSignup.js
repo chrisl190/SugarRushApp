@@ -11,7 +11,7 @@ import SignUpReviewAfter from '../screens/SignUpReviewAfter';
 import SignUpScreenPassword from '../screens/SignUpPassword';
 import BottomTab from './bottomTab';
 import LandingScreen from '../screens/Landing';
-import WorkExperience from '../screens/WorkExperience';
+import WorkExperienceItem from '../screens/WorkExperienceItem';
 import WorkExperienceView from '../screens/WorkExperienceView';
 import {useAuthenticatedContext} from '../hooks/authenticatedContext';
 import Industries from '../screens/Industries';
@@ -36,7 +36,7 @@ export const StackSignup = () => {
           component={WorkExperienceView}
           options={{title: 'Work Experience'}}
         />
-        <Stack.Screen name="ExperienceWorkItem" component={WorkExperience} />
+        <Stack.Screen name="ExperienceWorkItem" component={WorkExperienceItem} />
         <Stack.Screen name="ExperienceIndustries" component={Industries} />
         <Stack.Screen name="SignUpReviewBefore" component={SignUpReviewBefore} />
         <Stack.Screen name="SignUpReviewAfter" component={SignUpReviewAfter} />

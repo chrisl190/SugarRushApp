@@ -12,7 +12,7 @@ import {
 import CustomButton from '../components/CustomButton';
 import CustomInput from '../components/CustomInput';
 
-function WorkExperience({navigation}) {
+const WorkExperienceItem = ({navigation}) => {
   const [userDetails, setUserDetails] = useState({
     start_date: '',
     end_date: '',
@@ -100,4 +100,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WorkExperience;
+export default WorkExperienceItem;

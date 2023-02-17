@@ -15,12 +15,17 @@ import CustomButton from '../components/CustomButton';
 function WorkExperienceView({ navigation, route }){
   const items = [];
 
-  const onPress = () => {
+  const onPressAdd = () => {
+    navigation.navigate('ExperienceWorkItem');
+  };
+
+  const onPressNext = () => {
     navigation.navigate('ExperienceIndustries');
   };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
+    <CustomButton onPress={onPressAdd} text={'Add'}/>
     <View style={styles.root}>
       { items.map((item) => <View style={styles.details}>
         <Text style={styles.text}>
@@ -53,7 +58,7 @@ function WorkExperienceView({ navigation, route }){
         </View>
       )}
       </View>
-      <CustomButton onPress={onPress} text={'Next'}/>
+      <CustomButton onPress={onPressNext} text={'Next'}/>
     </ScrollView>
   );
 }
