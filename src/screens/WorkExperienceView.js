@@ -11,11 +11,17 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import CustomButton from '../components/CustomButton';
+import { Selector, Slice, useAppDispatch, useAppSelector } from '../state';
 
 function WorkExperienceView({ navigation, route }){
+  const dispatch = useAppDispatch();
+  const stateUserSignup = useAppSelector(Selector.UserSignup);
+
   const items = [];
 
   const onPressAdd = () => {
+    console.log(stateUserSignup);
+    dispatch(Slice.userSignup.actions.setNameFirst('test'));
     navigation.navigate('ExperienceWorkItem');
   };
 
@@ -26,6 +32,7 @@ function WorkExperienceView({ navigation, route }){
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
     <CustomButton onPress={onPressAdd} text={'Add'}/>
+    <Text style={styles.text}>{ 'Name (First): ' + stateUserSignup.first_name }</Text>
     <View style={styles.root}>
       { items.map((item) => <View style={styles.details}>
         <Text style={styles.text}>

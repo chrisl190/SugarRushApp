@@ -20,9 +20,15 @@ function reducer(state, action) {
       }
       case 'industries': {
         return {
-          industries: state.industries.id,
+          industries: state.industries,
         };
       }
     }
     throw Error('Unknown action: ' + action.type);
   }
+
+const initialState = {
+
+};
+
+const SignupReducer = useReducer(...reducer, initialState);
