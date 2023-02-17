@@ -1,6 +1,6 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/query';
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { API_ENDPOINT } from '../config/sugarRush';
+import { API_ENDPOINT } from '../../../config/sugarRush';
 
 export const api = createApi({
     reducerPath: 'api',
