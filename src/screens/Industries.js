@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   StyleSheet,
@@ -8,17 +8,15 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Modal,
-  ScrollView,
 } from 'react-native';
 import {API_ENDPOINT} from '../config/sugarRush';
 import axios from 'axios';
 import CustomButton from '../components/CustomButton';
-import { Selector, Slice, useAppDispatch, useAppSelector } from '../state';
+import {Selector, Slice, useAppDispatch, useAppSelector} from '../state';
 
-
-function Industries({ navigation }) {
-  const [open, setOpen] = React.useState(false);
-  const [data, setData] = React.useState([]);
+const Industries = ({navigation}) => {
+  const [open, setOpen] = useState(false);
+  const [data, setData] = useState([]);
   const dispatch = useAppDispatch();
   const stateUserSignup = useAppSelector(Selector.UserSignup);
 
@@ -61,9 +59,9 @@ function Industries({ navigation }) {
   const onPress = () => {
     //dispatch(Slice.userSignup.actions.setIndustries(data));
     navigation.navigate('SignUpReviewBefore');
-  }
+  };
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchAPI();
   }, []);
 
@@ -78,7 +76,7 @@ function Industries({ navigation }) {
   );
   return (
     <SafeAreaView>
-      <View style={styles.root}>
+      <View style={styles.container}>
         <Text style={styles.title}>
           Select the industries you have worked in
         </Text>
@@ -94,7 +92,7 @@ function Industries({ navigation }) {
               <Text key={item.id}>{item.industry}</Text>
             ))}
         </View>
-        <CustomButton onPress={onPress} text={'Next'}/>
+        <CustomButton onPress={onPress} text={'Next'} />
       </View>
       <Modal animationType="slide" transparent={true} visible={open === true}>
         <TouchableOpacity
@@ -116,7 +114,7 @@ function Industries({ navigation }) {
       </Modal>
     </SafeAreaView>
   );
-}
+};
 
 const ItemRenderer = ({index, industry, selected, onUpdateValue}) => (
   <View style={styles.item}>
@@ -129,7 +127,7 @@ const ItemRenderer = ({index, industry, selected, onUpdateValue}) => (
 );
 
 const styles = StyleSheet.create({
-  root: {
+  container: {
     alignItems: 'center',
     padding: 20,
   },
@@ -181,7 +179,7 @@ const styles = StyleSheet.create({
   buttonTextStyle: {
     fontWeight: 'bold',
     color: 'white',
-  }
+  },
 });
 
 export default Industries;

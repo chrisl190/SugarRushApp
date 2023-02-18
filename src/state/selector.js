@@ -1,1 +1,1 @@
-export { selectorUserSignup as UserSignup } from './slice/userSignup';
+export {selectorUserSignup as UserSignup} from './slice/userSignup';

@@ -1,17 +1,8 @@
 import React, {useState} from 'react';
-import {
-  Button,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import CustomButton from '../components/CustomButton';
 import CustomInput from '../components/CustomInput';
-import { Selector, Slice, useAppDispatch, useAppSelector } from '../state';
+import {Selector, Slice, useAppDispatch, useAppSelector} from '../state';
 
 const WorkExperienceItem = ({navigation}) => {
   const [userDetails, setUserDetails] = useState({
@@ -30,7 +21,7 @@ const WorkExperienceItem = ({navigation}) => {
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.root}>
+      <View style={styles.container}>
         <Text style={styles.title}>Add your Work Experience</Text>
 
         <CustomInput
@@ -39,7 +30,7 @@ const WorkExperienceItem = ({navigation}) => {
           setValue={e => {
             setUserDetails(userDetails => ({
               ...userDetails,
-              ...{'start_date': e},
+              ...{start_date: e},
             }));
           }}
         />
@@ -49,7 +40,7 @@ const WorkExperienceItem = ({navigation}) => {
           setValue={e => {
             setUserDetails(userDetails => ({
               ...userDetails,
-              ...{'end_date': e},
+              ...{end_date: e},
             }));
           }}
         />
@@ -59,7 +50,7 @@ const WorkExperienceItem = ({navigation}) => {
           setValue={e => {
             setUserDetails(userDetails => ({
               ...userDetails,
-              ...{'role': e},
+              ...{role: e},
             }));
           }}
         />
@@ -69,7 +60,7 @@ const WorkExperienceItem = ({navigation}) => {
           setValue={e => {
             setUserDetails(userDetails => ({
               ...userDetails,
-              ...{'description': e},
+              ...{description: e},
             }));
           }}
         />
@@ -77,10 +68,10 @@ const WorkExperienceItem = ({navigation}) => {
       </View>
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  root: {
+  container: {
     alignItems: 'center',
     padding: 20,
   },
@@ -93,12 +84,6 @@ const styles = StyleSheet.create({
   text: {
     color: 'gray',
     marginVertical: 10,
-  },
-  checkbox: {
-    paddingLeft: 20,
-  },
-  link: {
-    color: '#FDB075',
   },
 });
 

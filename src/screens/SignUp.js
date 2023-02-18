@@ -2,19 +2,18 @@ import React, {useState} from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
-import {useNavigation} from '@react-navigation/core';
 import Toast from 'react-native-toast-message';
-import { Selector, Slice, useAppDispatch, useAppSelector } from '../state';
+import {Selector, Slice, useAppDispatch, useAppSelector} from '../state';
 
-function validate_email(email) {
-  return true;
-  let check =/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const validate_email = email => {
+  let check =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   if (email.match(check)) {
     return true;
   } else {
     return false;
   }
-}
+};
 
 const SignUpScreen = ({navigation}) => {
   const [first_name, setFirstName] = useState('');
@@ -27,12 +26,9 @@ const SignUpScreen = ({navigation}) => {
   const [county, setCounty] = useState('');
   const [country, setCountry] = useState('');
   const [postcode, setPostcode] = useState('');
-  
+
   const dispatch = useAppDispatch();
   const stateUserSignup = useAppSelector(Selector.UserSignup);
-
-  const dispatchSignUp = () => {
-  }
 
   const onRegisterPressed = () => {
     if (!validate_email(email)) {
@@ -52,18 +48,13 @@ const SignUpScreen = ({navigation}) => {
       dispatch(Slice.userSignup.actions.setCounty(county));
       dispatch(Slice.userSignup.actions.setCountry(country));
       dispatch(Slice.userSignup.actions.setPostcode(postcode));
-      console.log('email:' + stateUserSignup.email);
-      console.log('first_name:' + stateUserSignup.first_name);
-      console.log('last_name:' + stateUserSignup.last_name);
-      console.log('address_1:' + stateUserSignup.address_1);
-      console.log('county:' + stateUserSignup.county);
       navigation.navigate('SignUpPassword');
     }
   };
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.root}>
+      <View style={styles.container}>
         <Text style={styles.title}>Create an password</Text>
 
         <CustomInput
@@ -113,7 +104,7 @@ const SignUpScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  root: {
+  container: {
     alignItems: 'center',
     padding: 20,
   },
@@ -129,9 +120,6 @@ const styles = StyleSheet.create({
   },
   checkbox: {
     paddingLeft: 20,
-  },
-  link: {
-    color: '#FDB075',
   },
 });
 

@@ -1,28 +1,16 @@
-import React, {useState} from 'react';
-import {
-  Button,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React from 'react';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import CustomButton from '../components/CustomButton';
 import {Selector, Slice, useAppDispatch, useAppSelector} from '../state';
 
-function WorkExperienceView({navigation, route}) {
+const WorkExperienceView = ({navigation, route}) => {
   const dispatch = useAppDispatch();
   const stateUserSignup = useAppSelector(Selector.UserSignup);
 
   const items = [];
 
   const onPressAdd = () => {
-    //console.log(stateUserSignup);
-    //dispatch(Slice.userSignup.actions.setNameFirst('test'));
-    //dispatch(Slice.userSignup.actions.setExperiences(test));
     navigation.navigate('ExperienceWorkItem');
   };
 
@@ -30,25 +18,30 @@ function WorkExperienceView({navigation, route}) {
     navigation.navigate('ExperienceIndustries');
   };
 
-  if(stateUserSignup.experiences.start_date && stateUserSignup.experiences.end_date && stateUserSignup.experiences.role && stateUserSignup.experiences.description != undefined ) {
+  if (
+    stateUserSignup.experiences.start_date &&
+    stateUserSignup.experiences.end_date &&
+    stateUserSignup.experiences.role &&
+    stateUserSignup.experiences.description != undefined
+  ) {
     return (
       <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.root}>
-        <Text style={styles.text}>{'Experiences'}</Text>
-        <Text style={styles.text}>
-          {'start date: ' + stateUserSignup.experiences.start_date}
-        </Text>
-        <Text style={styles.text}>
-          {'end : ' + stateUserSignup.experiences.end_date}
-        </Text>
-        <Text style={styles.text}>
-          {'role : ' + stateUserSignup.experiences.role}
-        </Text>
-        <Text style={styles.text}>
-          {'desc : ' + stateUserSignup.experiences.description}
-        </Text>
+        <View style={styles.container}>
+          <Text style={styles.text}>{'Experiences'}</Text>
+          <Text style={styles.text}>
+            {'start date: ' + stateUserSignup.experiences.start_date}
+          </Text>
+          <Text style={styles.text}>
+            {'end : ' + stateUserSignup.experiences.end_date}
+          </Text>
+          <Text style={styles.text}>
+            {'role : ' + stateUserSignup.experiences.role}
+          </Text>
+          <Text style={styles.text}>
+            {'desc : ' + stateUserSignup.experiences.description}
+          </Text>
 
-        {/* {items.map(item => (
+          {/* {items.map(item => (
           <View style={styles.details}>
             <Text style={styles.text}>
               <Text style={styles.key}>Start Date: </Text>
@@ -79,26 +72,26 @@ function WorkExperienceView({navigation, route}) {
             />
           </View>
         ))} */}
-        <CustomButton onPress={onPressAdd} text={'Add'} />
-        <CustomButton onPress={onPressNext} text={'Next'} />
-      </View>
-    </ScrollView>
+          <CustomButton onPress={onPressAdd} text={'Add'} />
+          <CustomButton onPress={onPressNext} text={'Next'} />
+        </View>
+      </ScrollView>
     );
   }
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.root}>
+      <View style={styles.container}>
         <Text style={styles.text}>{'Experiences'}</Text>
         <CustomButton onPress={onPressAdd} text={'Add'} />
         <CustomButton onPress={onPressNext} text={'Next'} />
       </View>
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  root: {
+  container: {
     alignItems: 'center',
     padding: 20,
   },

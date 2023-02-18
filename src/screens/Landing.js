@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -9,17 +9,15 @@ import {
 } from 'react-native';
 import Logo from '../../assets/images/sugar_rush.png';
 import CustomButton from '../components/CustomButton';
-import {useNavigation} from '@react-navigation/native';
-import { useAuthenticatedContext } from '../hooks/authenticatedContext';
-import { Selector, Slice, useAppDispatch, useAppSelector } from '../state';
+import {useAuthenticatedContext} from '../hooks/authenticatedContext';
+import {Selector, Slice, useAppDispatch, useAppSelector} from '../state';
 
-const LandingScreen = () => {
+const LandingScreen = ({navigation}) => {
   const [authenticated, setAuthenticated] = useAuthenticatedContext();
   const dispatch = useAppDispatch();
   const stateUserSignup = useAppSelector(Selector.UserSignup);
 
   const {height} = useWindowDimensions();
-  const navigation = useNavigation();
 
   const onSignOutPressed = () => {
     dispatch(Slice.userSignup.actions.reset());
@@ -32,7 +30,7 @@ const LandingScreen = () => {
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.root}>
+      <View style={styles.container}>
         <Image
           source={Logo}
           style={[styles.logo, {height: height * 0.3}]}
@@ -40,11 +38,10 @@ const LandingScreen = () => {
         />
         {authenticated ? (
           <>
-            <Text style={styles.title}>Welcome {stateUserSignup.first_name}</Text>
-            <CustomButton
-              text="Log out"
-              onPress={onSignOutPressed}
-            />
+            <Text style={styles.title}>
+              Welcome {stateUserSignup.first_name}
+            </Text>
+            <CustomButton text="Log out" onPress={onSignOutPressed} />
           </>
         ) : (
           <CustomButton text="Register" onPress={onSignUpPress} />
@@ -55,7 +52,7 @@ const LandingScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  root: {
+  container: {
     alignItems: 'center',
     padding: 20,
   },
