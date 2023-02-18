@@ -6,6 +6,7 @@ import {useNavigation} from '@react-navigation/core';
 import Toast from 'react-native-toast-message';
 import CheckBox from '@react-native-community/checkbox';
 import { useAuthenticatedContext } from '../hooks/authenticatedContext';
+import { Selector, Slice, useAppDispatch, useAppSelector } from '../state';
 
 function validate_password(password) {
   let check = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/g;
@@ -16,14 +17,13 @@ function validate_password(password) {
   }
 }
 
-const SignUpScreenPassword = () => {
+const SignUpScreenPassword = ({navigation}) => {
   const [authenticated, setAuthenticated] = useAuthenticatedContext();
   const [password, setPassword] = useState('');
   const [password_confirmation, setPasswordConfirmation] = useState('');
   const [terms_and_conditions, set_terms_and_conditions] = useState(false);
-
-
-  const navigation = useNavigation();
+  const dispatch = useAppDispatch();
+  const stateUserSignup = useAppSelector(Selector.UserSignup);
 
   const onTermsOfUsePressed = () => {
     console.warn('Terms and Conditions pressed');
@@ -57,11 +57,15 @@ const SignUpScreenPassword = () => {
   }
 
   const onRegisterPressed = () => {
-    navigation.navigate('ExperienceWork');
     if (password === password_confirmation) {
         if (validate_password(password) && validate_password(password_confirmation)){
             setAuthenticated(true);
             successToast();
+            dispatch(Slice.userSignup.actions.setPassword(password));
+            dispatch(Slice.userSignup.actions.setPasswordConfirmation(password_confirmation));
+            dispatch(Slice.userSignup.actions.setTermsAndConditions(terms_and_conditions));
+            console.log('password:' + stateUserSignup.password);
+            console.log('password confirm:' + stateUserSignup.password_confirmation);
             navigation.navigate('ExperienceWork');
         } else {
             showPasswordErrorToast();

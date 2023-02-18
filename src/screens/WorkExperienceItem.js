@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import CustomButton from '../components/CustomButton';
 import CustomInput from '../components/CustomInput';
+import { Selector, Slice, useAppDispatch, useAppSelector } from '../state';
 
 const WorkExperienceItem = ({navigation}) => {
   const [userDetails, setUserDetails] = useState({
@@ -20,10 +21,11 @@ const WorkExperienceItem = ({navigation}) => {
     description: '',
   });
   const [experiences, setExperiences] = useState([]);
+  const dispatch = useAppDispatch();
 
   const onSubmit = () => {
-    //setExperiences([...userDetails, { key: Date.now() }]);
-    navigation.navigate('ExperienceIndustries', userDetails);
+    dispatch(Slice.userSignup.actions.setExperiences(userDetails));
+    navigation.navigate('ExperienceWork', userDetails);
   };
 
   return (

@@ -7,7 +7,7 @@ export function useAuthenticatedContext() {
 }
 
 export function AuthenticatedProvider({ children }) {
-    const [authenticated, setAuthenticated] = useState(true);
+    const [authenticated, setAuthenticated] = useState(false);
     return (
         <AuthenticatedContext.Provider value={[authenticated, setAuthenticated]}>
             {children}

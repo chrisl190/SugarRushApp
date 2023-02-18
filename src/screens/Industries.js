@@ -13,10 +13,14 @@ import {
 import {API_ENDPOINT} from '../config/sugarRush';
 import axios from 'axios';
 import CustomButton from '../components/CustomButton';
+import { Selector, Slice, useAppDispatch, useAppSelector } from '../state';
+
 
 function Industries({ navigation }) {
   const [open, setOpen] = React.useState(false);
   const [data, setData] = React.useState([]);
+  const dispatch = useAppDispatch();
+  const stateUserSignup = useAppSelector(Selector.UserSignup);
 
   // const [data, setData] = React.useState([
   //   {id: 1, industry: 'HGV Driver', selected: false},
@@ -55,6 +59,7 @@ function Industries({ navigation }) {
   };
 
   const onPress = () => {
+    //dispatch(Slice.userSignup.actions.setIndustries(data));
     navigation.navigate('SignUpReviewBefore');
   }
 

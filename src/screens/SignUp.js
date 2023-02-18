@@ -4,6 +4,7 @@ import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
 import {useNavigation} from '@react-navigation/core';
 import Toast from 'react-native-toast-message';
+import { Selector, Slice, useAppDispatch, useAppSelector } from '../state';
 
 function validate_email(email) {
   return true;
@@ -15,7 +16,7 @@ function validate_email(email) {
   }
 }
 
-const SignUpScreen = () => {
+const SignUpScreen = ({navigation}) => {
   const [first_name, setFirstName] = useState('');
   const [last_name, setLastName] = useState('');
 
@@ -27,7 +28,11 @@ const SignUpScreen = () => {
   const [country, setCountry] = useState('');
   const [postcode, setPostcode] = useState('');
   
-  const navigation = useNavigation();
+  const dispatch = useAppDispatch();
+  const stateUserSignup = useAppSelector(Selector.UserSignup);
+
+  const dispatchSignUp = () => {
+  }
 
   const onRegisterPressed = () => {
     if (!validate_email(email)) {
@@ -38,6 +43,20 @@ const SignUpScreen = () => {
         position: 'bottom',
       });
     } else {
+      dispatch(Slice.userSignup.actions.setNameFirst(first_name));
+      dispatch(Slice.userSignup.actions.setNameLast(last_name));
+      dispatch(Slice.userSignup.actions.setDateOfBirth(date_of_birth));
+      dispatch(Slice.userSignup.actions.setEmail(email));
+      dispatch(Slice.userSignup.actions.setAddress1(address_1));
+      dispatch(Slice.userSignup.actions.setAddress2(address_2));
+      dispatch(Slice.userSignup.actions.setCounty(county));
+      dispatch(Slice.userSignup.actions.setCountry(country));
+      dispatch(Slice.userSignup.actions.setPostcode(postcode));
+      console.log('email:' + stateUserSignup.email);
+      console.log('first_name:' + stateUserSignup.first_name);
+      console.log('last_name:' + stateUserSignup.last_name);
+      console.log('address_1:' + stateUserSignup.address_1);
+      console.log('county:' + stateUserSignup.county);
       navigation.navigate('SignUpPassword');
     }
   };

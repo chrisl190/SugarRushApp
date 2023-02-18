@@ -5,7 +5,7 @@ import * as slice from './slice';
 
 const combinedReducer = combineReducers({
     [slice.api.reducerPath]: slice.api.reducer,
-    userSignup: slice.userSignup.reducer,
+    userSignup: slice.userSignup.reducer
 });
 
 const rootReducer = (state, action) => {

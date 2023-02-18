@@ -11,9 +11,11 @@ import Logo from '../../assets/images/sugar_rush.png';
 import CustomButton from '../components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
 import { useAuthenticatedContext } from '../hooks/authenticatedContext';
+import { Selector, Slice, useAppDispatch, useAppSelector } from '../state';
 
 const LandingScreen = () => {
   const [authenticated, setAuthenticated] = useAuthenticatedContext();
+  const stateUserSignup = useAppSelector(Selector.UserSignup);
 
   const {height} = useWindowDimensions();
   const navigation = useNavigation();
@@ -36,7 +38,7 @@ const LandingScreen = () => {
         />
         {authenticated ? (
           <>
-            <Text style={styles.title}>Welcome "Name"</Text>
+            <Text style={styles.title}>Welcome {stateUserSignup.first_name}</Text>
             <CustomButton
               text="Log out"
               onPress={onSignOutPressed}
