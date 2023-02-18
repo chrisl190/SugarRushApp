@@ -19,23 +19,9 @@ const Industries = ({navigation}) => {
   const [data, setData] = useState([]);
   const dispatch = useAppDispatch();
   const stateUserSignup = useAppSelector(Selector.UserSignup);
-
-  // const [data, setData] = React.useState([
-  //   {id: 1, industry: 'HGV Driver', selected: false},
-  //   {id: 2, industry: 'General Hand'},
-  //   {id: 3, industry: 'Plant Operator'},
-  //   {id: 4, industry: 'Bricklayer'},
-  //   {id: 5, industry: 'Joiner'},
-  //   {id: 6, industry: 'Excavator Operator'},
-  //   {id: 7, industry: 'Accounts Staff'},
-  //   {id: 8, industry: 'Delivery Person'},
-  //   {id: 9, industry: 'Gardener'},
-  //   {id: 10, industry: 'Developer'},
-  //   {id: 11, industry: 'Designer'},
-  //   {id: 12, industry: 'Cleaner'},
-  //   {id: 13, industry: 'Painter'},
-  //   {id: 14, industry: 'Bingpot'},
-  // ]);
+  const selectedIndustriesID = data
+    .filter(item => item.selected)
+    .map(item => item.id);
 
   openList = () => setOpen(true);
   closeList = () => setOpen(false);
@@ -47,23 +33,30 @@ const Industries = ({navigation}) => {
   const fetchAPI = async () => {
     try {
       const response = await axios.get(API_ENDPOINT + '/industries');
-      console.log('Success');
-      console.log(response.data.data);
       setData(response.data.data);
     } catch (e) {
-      console.log('Error');
-      console.log(e);
+      console.log('Error' + e);
     }
   };
 
   const onPress = () => {
-    //dispatch(Slice.userSignup.actions.setIndustries(data));
+    dispatch(Slice.userSignup.actions.setIndustries(selectedIndustriesID));
     navigation.navigate('SignUpReviewBefore');
   };
 
   useEffect(() => {
     fetchAPI();
   }, []);
+
+  const ItemRenderer = ({index, industry, selected, onUpdateValue}) => (
+    <View style={styles.item}>
+      <Text style={styles.text}>{industry}</Text>
+      <Switch
+        value={selected}
+        onValueChange={value => onUpdateValue(index, value)}
+      />
+    </View>
+  );
 
   renderItem = ({item, index}) => (
     <ItemRenderer
@@ -115,16 +108,6 @@ const Industries = ({navigation}) => {
     </SafeAreaView>
   );
 };
-
-const ItemRenderer = ({index, industry, selected, onUpdateValue}) => (
-  <View style={styles.item}>
-    <Text style={styles.text}>{industry}</Text>
-    <Switch
-      value={selected}
-      onValueChange={value => onUpdateValue(index, value)}
-    />
-  </View>
-);
 
 const styles = StyleSheet.create({
   container: {

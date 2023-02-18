@@ -13,7 +13,7 @@ const initialState = {
   password: '',
   password_confirmation: '',
   terms_and_conditions: false,
-  industries: [1, 2, 3],
+  industries: [],
   experiences: [
     {
       start_date: '',

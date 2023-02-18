@@ -55,7 +55,7 @@ const SignUpScreen = ({navigation}) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-        <Text style={styles.title}>Create an password</Text>
+        <Text style={styles.title}>Sign Up</Text>
 
         <CustomInput
           placeholder="First name"

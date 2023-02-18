@@ -27,18 +27,17 @@ const WorkExperienceView = ({navigation, route}) => {
     return (
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
-          <Text style={styles.text}>{'Experiences'}</Text>
           <Text style={styles.text}>
-            {'start date: ' + stateUserSignup.experiences.start_date}
+            {'Start Date: ' + stateUserSignup.experiences.start_date}
           </Text>
           <Text style={styles.text}>
-            {'end : ' + stateUserSignup.experiences.end_date}
+            {'End Date : ' + stateUserSignup.experiences.end_date}
           </Text>
           <Text style={styles.text}>
-            {'role : ' + stateUserSignup.experiences.role}
+            {'Role : ' + stateUserSignup.experiences.role}
           </Text>
           <Text style={styles.text}>
-            {'desc : ' + stateUserSignup.experiences.description}
+            {'Description : ' + stateUserSignup.experiences.description}
           </Text>
 
           {/* {items.map(item => (
@@ -82,7 +81,7 @@ const WorkExperienceView = ({navigation, route}) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-        <Text style={styles.text}>{'Experiences'}</Text>
+        <Text style={styles.title}>Experiences</Text>
         <CustomButton onPress={onPressAdd} text={'Add'} />
         <CustomButton onPress={onPressNext} text={'Next'} />
       </View>
@@ -98,6 +97,12 @@ const styles = StyleSheet.create({
   text: {
     color: 'black',
     marginVertical: 10,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'black',
+    margin: 10,
   },
   details: {
     marginBottom: 15,
