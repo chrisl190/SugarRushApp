@@ -31,64 +31,64 @@ const SignUpReviewAfter = ({navigation, route,}) => {
     fetchAPI();
   }, []);
 
+  if(data) {
+    return (
+      <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={styles.root}>
+        <Text style={styles.text}>
+        {'First Name: ' + data.user.first_name}
+        </Text>
+        <Text style={styles.text}>
+        {'Last Name: ' + data.user.last_name}
+        </Text>
+        <Text style={styles.text}>
+        {'Date of Birth: ' + data.user.date_of_birth}
+        </Text>
+        <Text style={styles.text}>
+        {'Email: ' + data.user.email}
+        </Text>
+        <Text style={styles.text}>
+        {'Address 1: ' + data.user.address_1}
+        </Text>
+        <Text style={styles.text}>
+        {'Address 2: ' + data.user.address_2}
+        </Text>
+        <Text style={styles.text}>
+        {'County: ' + data.user.county}
+        </Text>
+        <Text style={styles.text}>
+        {'Country: ' + data.user.country}
+        </Text>
+        <Text style={styles.text}>
+        {'Postcode: ' + data.user.postcode}
+        </Text>
+        <Text style={styles.text}>
+        {'Experiences'}
+        </Text>
+        <Text style={styles.text}>
+        {'start date: ' + data.experiences.start_date}
+        </Text>
+        <Text style={styles.text}>
+        {'end date: ' + data.experiences.end_date}
+        </Text>
+        <Text style={styles.text}>
+        {'role: ' + data.experiences.role}
+        </Text>
+        <Text style={styles.text}>
+        {'description: ' + data.experiences.description}
+        </Text>
+        <Text style={styles.text}>
+        {'Industires: ' + data.industries}
+        </Text>
+        <CustomButton text="Continue" onPress={onPress} />
+      </View>
+    </ScrollView>
+  );
+};
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        <Text style={styles.text}>
-        {/* {'First Name:' + data.data.experiences} */}
-        </Text>
-        <Text style={styles.text}>
-        {'Last Name:'}
-        </Text>
-        <Text style={styles.text}>
-        {'Date of Birth:'}
-        </Text>
-        <Text style={styles.text}>
-        {'Email:'}
-        </Text>
-        <Text style={styles.text}>
-        {'Address 1:'}
-        </Text>
-        <Text style={styles.text}>
-        {'Address 2:'}
-        </Text>
-        <Text style={styles.text}>
-        {'County:'}
-        </Text>
-        <Text style={styles.text}>
-        {'Country:'}
-        </Text>
-        <Text style={styles.text}>
-        {'Postcode:'}
-        </Text>
-        <Text style={styles.text}>
-        {'Password:'}
-        </Text>
-        <Text style={styles.text}>
-        {'Password confirm:'}
-        </Text>
-        <Text style={styles.text}>
-        {'Terms and Conditions:'}
-        </Text>
-        <Text style={styles.text}>
-        {'Experiences: '}
-        </Text>
-        <Text style={styles.text}>
-        {'start date: ' }
-        </Text>
-        <Text style={styles.text}>
-        {'end date: ' }
-        </Text>
-        <Text style={styles.text}>
-        {'role: '}
-        </Text>
-        <Text style={styles.text}>
-        {'description: '}
-        </Text>
-        <Text style={styles.text}>
-        {'Industires: '}
-        </Text>
-        <CustomButton text="Continue" onPress={onPress} />
       </View>
     </ScrollView>
   );

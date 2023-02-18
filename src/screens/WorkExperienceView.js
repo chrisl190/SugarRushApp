@@ -30,27 +30,25 @@ function WorkExperienceView({navigation, route}) {
     navigation.navigate('ExperienceIndustries');
   };
 
-  return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <CustomButton onPress={onPressAdd} text={'Add'} />
-      {stateUserSignup.experiences.start_date && stateUserSignup.experiences.end_date && stateUserSignup.experiences.role && stateUserSignup.experiences.description === '' ? null : (
-        <>
-          <Text style={styles.text}>
-            {'Experiences): ' + stateUserSignup.experiences.start_date}
-          </Text>
-          <Text style={styles.text}>
-            {'end): ' + stateUserSignup.experiences.end_date}
-          </Text>
-          <Text style={styles.text}>
-            {'role): ' + stateUserSignup.experiences.role}
-          </Text>
-          <Text style={styles.text}>
-            {'desc): ' + stateUserSignup.experiences.description}
-          </Text>
-        </>
-      )}
+  if(stateUserSignup.experiences.start_date && stateUserSignup.experiences.end_date && stateUserSignup.experiences.role && stateUserSignup.experiences.description != undefined ) {
+    return (
+      <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.root}>
-        {items.map(item => (
+        <Text style={styles.text}>{'Experiences'}</Text>
+        <Text style={styles.text}>
+          {'start date: ' + stateUserSignup.experiences.start_date}
+        </Text>
+        <Text style={styles.text}>
+          {'end : ' + stateUserSignup.experiences.end_date}
+        </Text>
+        <Text style={styles.text}>
+          {'role : ' + stateUserSignup.experiences.role}
+        </Text>
+        <Text style={styles.text}>
+          {'desc : ' + stateUserSignup.experiences.description}
+        </Text>
+
+        {/* {items.map(item => (
           <View style={styles.details}>
             <Text style={styles.text}>
               <Text style={styles.key}>Start Date: </Text>
@@ -80,9 +78,21 @@ function WorkExperienceView({navigation, route}) {
               onPress={() => console.log('Delete')}
             />
           </View>
-        ))}
+        ))} */}
+        <CustomButton onPress={onPressAdd} text={'Add'} />
+        <CustomButton onPress={onPressNext} text={'Next'} />
       </View>
-      <CustomButton onPress={onPressNext} text={'Next'} />
+    </ScrollView>
+    );
+  }
+
+  return (
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={styles.root}>
+        <Text style={styles.text}>{'Experiences'}</Text>
+        <CustomButton onPress={onPressAdd} text={'Add'} />
+        <CustomButton onPress={onPressNext} text={'Next'} />
+      </View>
     </ScrollView>
   );
 }

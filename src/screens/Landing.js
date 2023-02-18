@@ -15,12 +15,14 @@ import { Selector, Slice, useAppDispatch, useAppSelector } from '../state';
 
 const LandingScreen = () => {
   const [authenticated, setAuthenticated] = useAuthenticatedContext();
+  const dispatch = useAppDispatch();
   const stateUserSignup = useAppSelector(Selector.UserSignup);
 
   const {height} = useWindowDimensions();
   const navigation = useNavigation();
 
   const onSignOutPressed = () => {
+    dispatch(Slice.userSignup.actions.reset());
     setAuthenticated(false);
   };
 

@@ -38,7 +38,7 @@ const SignUpReviewBefore = ({navigation}) => {
 
   const onPress = () => {
     //const request = stateUserSignup;
-    //console.log(stateUserSignup);
+    console.log('Redux State: ' + {stateUserSignup});
     const request = {
       first_name: 'Jason',
       last_name: 'Sweeney',
