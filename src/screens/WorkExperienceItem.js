@@ -15,7 +15,7 @@ const WorkExperienceItem = ({navigation}) => {
   const dispatch = useAppDispatch();
 
   const onSubmit = () => {
-    dispatch(Slice.userSignup.actions.setExperiences(userDetails));
+    dispatch(Slice.userSignup.actions.addExperience(userDetails));
     navigation.navigate('ExperienceWork', userDetails);
   };
 

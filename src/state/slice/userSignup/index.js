@@ -1,4 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
+const UUID = require('pure-uuid');
 
 const initialState = {
   first_name: '',
@@ -14,14 +15,7 @@ const initialState = {
   password_confirmation: '',
   terms_and_conditions: false,
   industries: [],
-  experiences: [
-    {
-      start_date: '',
-      end_date: '',
-      role: '',
-      description: '',
-    },
-  ],
+  experiences: [],
 };
 
 export const userSignup = createSlice({
@@ -113,6 +107,32 @@ export const userSignup = createSlice({
       return {
         ...state,
         experiences: action.payload,
+      };
+    },
+    addExperience(state, action) {
+      const experience = {
+        ...action.payload,
+        id: new UUID(4).format('std'),
+      };
+
+      return {
+        ...state,
+        experiences: [...state.experiences, experience],
+      };
+    },
+    removeExperience(state, action) {
+      const experiencesNew = [...state.experiences];
+      const experienceToDelete = experiencesNew.findIndex(
+        e => e.id === action.payload,
+      );
+
+      if (experienceToDelete > -1) {
+        experiencesNew.splice(experienceToDelete, 1);
+      }
+
+      return {
+        ...state,
+        experiences: experiencesNew,
       };
     },
   },

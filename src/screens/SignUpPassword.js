@@ -49,7 +49,7 @@ const SignUpScreenPassword = ({navigation}) => {
     Toast.show({
       type: 'success',
       text1: 'Success',
-      text2: 'You have registered',
+      text2: 'Strong password',
       position: 'bottom',
     });
   };
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#051C60',
+    color: 'black',
     margin: 10,
   },
   text: {

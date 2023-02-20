@@ -23,7 +23,6 @@ const SignUpReviewBefore = ({navigation}) => {
   const onPressSuccess = response => {
     const userToken = response.data.user_token;
     const message = response.data.message;
-    console.log({userToken});
     Toast.show({
       type: 'success',
       text1: 'Success',
@@ -34,39 +33,7 @@ const SignUpReviewBefore = ({navigation}) => {
   };
 
   const onPress = () => {
-    //const request = stateUserSignup;
-    console.log('Redux State: ' + {stateUserSignup});
-    const request = {
-      first_name: 'Jason',
-      last_name: 'Sweeney',
-      date_of_birth: '07/01/2003',
-      email: 'jason.s@sugarrushcreative.com',
-      address_1: 'Sugar Rush Creative',
-      address_2: '7 Cromac Ave',
-      county: 'Antrim',
-      country: 'GB',
-      postcode: 'BT7 2JA',
-      password: 'SomethingHere65&',
-      password_confirmation: 'SomethingHere65&',
-      terms_and_conditions: true,
-      industries: [1, 2, 3],
-      experiences: [
-        {
-          start_date: '05/12/2016',
-          end_date: '19/02/2020',
-          role: 'Developer',
-          description: 'Some Description',
-        },
-        {
-          start_date: '04/12/2011',
-          end_date: '04/12/2016',
-          role: 'Front-end',
-          description: 'Another Description',
-        },
-      ],
-    };
-
-    //const request = {stateUserSignup};
+    const request = {...stateUserSignup};
     userSignup(request).unwrap().then(onPressSuccess).catch(onPressFailure);
     if (isSuccess) {
       setAuthenticated(true);
@@ -135,7 +102,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#051C60',
+    color: 'black',
     margin: 10,
   },
   text: {
