@@ -17,4 +17,4 @@ Navigate into the `SugarRushApp` folder
 
 Run `npm install`. Followed by:
 
-- `npm run ios`
+- `npm run android`
