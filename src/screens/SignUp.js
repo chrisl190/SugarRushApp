@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
 import Toast from 'react-native-toast-message';
-import {Selector, Slice, useAppDispatch, useAppSelector} from '../state';
+import {Slice, useAppDispatch} from '../state';
 
 const validate_email = email => {
   let check =
@@ -28,7 +28,6 @@ const SignUpScreen = ({navigation}) => {
   const [postcode, setPostcode] = useState('');
 
   const dispatch = useAppDispatch();
-  const stateUserSignup = useAppSelector(Selector.UserSignup);
 
   const onRegisterPressed = () => {
     if (!validate_email(email)) {

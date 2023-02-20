@@ -12,13 +12,12 @@ import {
 import {API_ENDPOINT} from '../config/sugarRush';
 import axios from 'axios';
 import CustomButton from '../components/CustomButton';
-import {Selector, Slice, useAppDispatch, useAppSelector} from '../state';
+import {Slice, useAppDispatch} from '../state';
 
 const Industries = ({navigation}) => {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState([]);
   const dispatch = useAppDispatch();
-  const stateUserSignup = useAppSelector(Selector.UserSignup);
   const selectedIndustriesID = data
     .filter(item => item.selected)
     .map(item => item.id);

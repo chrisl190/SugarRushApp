@@ -5,7 +5,7 @@ import CustomButton from '../components/CustomButton';
 import Toast from 'react-native-toast-message';
 import CheckBox from '@react-native-community/checkbox';
 import {useAuthenticatedContext} from '../hooks/authenticatedContext';
-import {Selector, Slice, useAppDispatch, useAppSelector} from '../state';
+import {Slice, useAppDispatch} from '../state';
 
 const validate_password = password => {
   let check = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/g;

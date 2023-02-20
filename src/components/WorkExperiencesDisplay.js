@@ -1,11 +1,10 @@
 import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
-import {Selector, Slice, useAppDispatch, useAppSelector} from '../state';
+import {Slice, useAppDispatch} from '../state';
 
 const WorkExperienceDisplay = ({experiences, deleteEnabled}) => {
   const dispatch = useAppDispatch();
-  const stateUserSignup = useAppSelector(Selector.UserSignup);
   const onPressItem = item => {
     dispatch(Slice.userSignup.actions.removeExperience(item.id));
   };
@@ -52,12 +51,6 @@ const styles = StyleSheet.create({
   text: {
     color: 'black',
     marginVertical: 10,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: 'black',
-    margin: 10,
   },
   details: {
     marginBottom: 15,

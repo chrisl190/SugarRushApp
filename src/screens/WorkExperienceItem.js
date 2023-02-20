@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import CustomButton from '../components/CustomButton';
 import CustomInput from '../components/CustomInput';
-import {Selector, Slice, useAppDispatch, useAppSelector} from '../state';
+import {Slice, useAppDispatch} from '../state';
 
 const WorkExperienceItem = ({navigation}) => {
   const [userDetails, setUserDetails] = useState({
@@ -11,7 +11,6 @@ const WorkExperienceItem = ({navigation}) => {
     role: '',
     description: '',
   });
-  const [experiences, setExperiences] = useState([]);
   const dispatch = useAppDispatch();
 
   const onSubmit = () => {

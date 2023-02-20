@@ -1,6 +1,6 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, createContext} from 'react';
 
-const AuthenticatedContext = React.createContext();
+const AuthenticatedContext = createContext();
 
 export function useAuthenticatedContext() {
   return useContext(AuthenticatedContext);

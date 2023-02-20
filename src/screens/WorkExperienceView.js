@@ -1,12 +1,10 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
 import CustomButton from '../components/CustomButton';
-import {Selector, Slice, useAppDispatch, useAppSelector} from '../state';
+import {Selector, useAppSelector} from '../state';
 import WorkExperienceDisplay from '../components/WorkExperiencesDisplay';
 
-const WorkExperienceView = ({navigation, route}) => {
-  const dispatch = useAppDispatch();
+const WorkExperienceView = ({navigation}) => {
   const stateUserSignup = useAppSelector(Selector.UserSignup);
 
   const onPressAdd = () => {
