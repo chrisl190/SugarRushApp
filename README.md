@@ -8,7 +8,7 @@ Navigate into the `SugarRushApp` folder
 
 Run `npm install`. Followed by:
 
-- `pod install`
+- cd into ios folder and run `pod install`
 - `npm run ios`
 
 ## Running the app on Android
